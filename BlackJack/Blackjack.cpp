@@ -11,7 +11,7 @@ BlackJack::BlackJack()
 
 void BlackJack::PlaceBet(Player& play)
 {
-	int temp;
+	int temp{};
 	iVec2D betOffset(0, 19);
 REDOBID:
 	SetCursorPosition(betOffset);
@@ -72,12 +72,12 @@ void BlackJack::OnUpdateRender()
 
 	if (player.GetCardSum() == 21)
 	{
-		const auto BJPot = (int)((float)currentPot + (1.5f*(float)currentPot*0.5f));
+		const auto BJPot = (int)((float)currentPot * 1.5f);
 		statusText.Clear();
 		statusText.SetText(L"Player BLACKJACK! wins pot: " + std::to_wstring(BJPot));
 		statusText.Print();
 		player.cash += BJPot;
-		std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+		std::this_thread::sleep_for(std::chrono::milliseconds(DELAY));
 		return;
 	}
 
@@ -106,7 +106,7 @@ void BlackJack::OnUpdateRender()
 			}
 			if (playerCardSum == 21)
 			{
-				const auto BJPot = (int)((float)currentPot + (1.5f * (float)currentPot * 0.5f));
+				const auto BJPot = (int)((float)currentPot * 1.5f);
 				statusText.Clear();
 				statusText.SetText(L"Player BLACKJACK! wins pot: " + std::to_wstring(BJPot));
 				statusText.Print();

@@ -48,9 +48,9 @@ void Dealer::ClearCards()
 void Dealer::TakeCards()
 {
 	for (;;)
-	{			
-		TakeCard();
-		if (cardSum > 17)
+	{					
+		if (cardSum > 16)
 			break;
+		TakeCard();
 	}
 }
